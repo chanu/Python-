@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization and Employee Management</title>
+</head>
+<body>
+    <h1>Organizations</h1>
+    <ul>
+        {% for org in organizations %}
+            <li>{{ org.name }} - {{ org.location }} - {{ org.industry }}</li>
+
+                {% for emp in org.employees %}
+                    <li>{{ emp.name }} - {{ emp.position }}</li>
+                {% endfor %}
+
+        {% endfor %}
+    </ul>
+
+    <h2>Create Organization</h2>
+    <form action="{{ url_for('create_organization') }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="location">Location:</label>
+        <input type="text" name="location" required>
+        <label for="industry">Industry:</label>
+        <input type="text" name="industry" required>
+        <button type="submit">Create Organization</button>
+    </form>
+
+    <h2>Create Employee</h2>
+    <form action="{{ url_for('create_employee') }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="position">Position:</label>
+        <input type="text" name="position" required>
+        <label for="org_name">Organization Name:</label>
+        <input type="text" name="org_name" required>
+        <button type="submit">Create Employee</button>
+    </form>
+<!--add more forms as needed...-->
+{% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+
+</body>
+</html>
+
+
+
