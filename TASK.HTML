@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .details-container {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Organization Management</h1>
+
+    <h2>Organizations</h2>
+    <div id="organizationDetails" class="details-container">
+        <h3>Organization Details:</h3>
+        <p><strong>Name:</strong> <span id="display-OrganizationName"></span></p>
+        <p><strong>Location:</strong> <span id="display-OrganizationLocation"></span></p>
+        <p><strong>Industry:</strong> <span id="display-OrganizationIndustry"></span></p>
+    </div>
+
+    <h2>Create Organization</h2>
+    <form id="organizationForm">
+        <label for="OrganizationName">Name:</label>
+        <input type="text" id="OrganizationName" name="OrganizationName" required>
+        <label for="OrganizationLocation">Location:</label>
+        <input type="text" id="OrganizationLocation" name="OrganizationLocation" required>
+        <label for="OrganizationIndustry">Industry:</label>
+        <input type="text" id="OrganizationIndustry" name="OrganizationIndustry" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Create Employee</h2>
+    <form id="employeeForm">
+        <label for="EmployeeName">Name:</label>
+        <input type="text" id="EmployeeName" name="EmployeeName" required>
+        <label for="EmployeePosition">Position:</label>
+        <input type="text" id="EmployeePosition" name="EmployeePosition" required>
+        <label for="EmployeeOrganizationName">Organization Name:</label>
+        <input type="text" id="EmployeeOrganizationName" name="EmployeeOrganizationName" required>
+        <label for="EmployeeEmail">Email:</label>
+        <input type="text" id="EmployeeEmail" name="EmployeeEmail" required>
+        <label for="EmployeeSalary">Salary:</label>
+        <input type="text" id="EmployeeSalary" name="EmployeeSalary" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="employeeDetails" class="details-container">
+        <h3>Employee Details:</h3>
+        <p><strong>Name:</strong> <span id="display-EmployeeName"></span></p>
+        <p><strong>Position:</strong> <span id="display-EmployeePosition"></span></p>
+        <p><strong>Organization Name:</strong> <span id="display-EmployeeOrganizationName"></span></p>
+        <p><strong>Email:</strong> <span id="display-EmployeeEmail"></span></p>
+        <p><strong>Salary:</strong> <span id="display-EmployeeSalary"></span></p>
+    </div>
+
+    <script>
+        function displayOrganizationDetails() {
+            var name = document.getElementById('OrganizationName').value;
+            var location = document.getElementById('OrganizationLocation').value;
+            var industry = document.getElementById('OrganizationIndustry').value;
+
+            document.getElementById('display-OrganizationName').textContent = name;
+            document.getElementById('display-OrganizationLocation').textContent = location;
+            document.getElementById('display-OrganizationIndustry').textContent = industry;
+
+            document.getElementById('organizationDetails').style.display = 'block';
+        }
+
+        function displayEmployeeDetails() {
+            var name = document.getElementById('EmployeeName').value;
+            var position = document.getElementById('EmployeePosition').value;
+            var orgName = document.getElementById('EmployeeOrganizationName').value;
+            var email = document.getElementById('EmployeeEmail').value;
+            var salary = document.getElementById('EmployeeSalary').value;
+
+            document.getElementById('display-EmployeeName').textContent = name;
+            document.getElementById('display-EmployeePosition').textContent = position;
+            document.getElementById('display-EmployeeOrganizationName').textContent = orgName;
+            document.getElementById('display-EmployeeEmail').textContent = email;
+            document.getElementById('display-EmployeeSalary').textContent = salary;
+
+            document.getElementById('employeeDetails').style.display = 'block';
+        }
+
+        document.getElementById('organizationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            displayOrganizationDetails();
+        });
+
+        document.getElementById('employeeForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            displayEmployeeDetails();
+        });
+    </script>
+</body>
+
+</html>
+
